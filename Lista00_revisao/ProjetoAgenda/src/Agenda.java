@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
-import java.util.HashSet;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -10,6 +9,7 @@ import java.io.IOException;
 public class Agenda {
     //Atributos
     List <Contato> listaContato = new ArrayList<>();
+    List <Contato> listaAux = new ArrayList<>();
     
     int tamanho;
     
@@ -27,6 +27,7 @@ public class Agenda {
                     Contato contato = new Contato();
                     contato.criaContato(nome, email, telefone);
                     listaContato.add(contato);
+                    listaAux.add(contato);
 
                 }
             }
@@ -90,7 +91,7 @@ public class Agenda {
                 System.out.println("Contato encontrado: ");
                 System.out.printf("Nome: %s\n", listaContato.get(i).nome);
                 System.out.printf("E-mail: %s\n", listaContato.get(i).email);
-                System.out.printf("Telefone: %d\n\n", listaContato.get(i).telefone);
+                System.out.printf("Telefone: %s\n\n", listaContato.get(i).telefone);
                 break;
             }else if(listaContato.get(i).nome!= nome && i == listaContato.size() - 1){
                 System.out.printf("Desculpe não consegui encontrar nenhum contato com o nome: %s\n\n", nome);
@@ -146,8 +147,28 @@ public class Agenda {
 
     public void salvaArquivo(String nomeArquivo){
         try(FileWriter writer = new FileWriter(nomeArquivo, true)) {
+            //Aqui ele vai comparar a listacontato com a aux e adicionar somente os que não estão na auxiliar
+            for (Contato contato : listaContato) {
+                boolean encontrado = false;
+                for (Contato contato2 : listaAux) {
+                    if(contato.equals(contato2)){
+                        encontrado = true;
+                        break;
+                    }
+                }
+                if (encontrado == false) {
+                    //Escreve os dados no csv
+                    writer.append(contato.getNome())
+                    .append(",")
+                    .append(contato.getEmail())
+                    .append(",")
+                    .append(contato.getTelefone())
+                    .append("\n");
             
-            //Escreve os dados no csv
+                }
+            }
+            
+           /*  //Escreve os dados no csv
             for (Contato contato : listaContato) {
                 writer.append(contato.getNome())
                     .append(",")
@@ -155,7 +176,7 @@ public class Agenda {
                     .append(",")
                     .append(contato.getTelefone())
                     .append("\n");
-            }
+            }*/
             System.out.printf("Os contatos foram salvos em %s\n", nomeArquivo);
         } catch (IOException e) {
             e.printStackTrace();
