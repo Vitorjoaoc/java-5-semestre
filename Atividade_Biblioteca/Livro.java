@@ -54,11 +54,12 @@ public void setDisponibilidade(boolean disponibilidade) {
 
 @Override
 public String toString(){
-    return "\nLivro:\n" +
+    return 
     "Titulo: " + titulo + '\n' +
     "Autor: " + autor + '\n' +
     "Numero: " + numero + '\n'+
-    "Disponibilidade: " + disponibilidade;
+    "Disponibilidade: " + disponibilidade +
+    "\n------------------------------";
 }
 
 

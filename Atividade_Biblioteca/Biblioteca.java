@@ -1,41 +1,5 @@
-import java.util.LinkedList;
 import java.util.Scanner;
 public class Biblioteca {
-    
-    //ORDENAÇÃO
-    static void quicksort(LinkedList<Livro> lista, int baixo, int alto) {
-        if (baixo < alto) {
-            int indiceParticao = particao(lista, baixo, alto);
-
-            // Recursivamente ordenar as sub-listas antes e depois da partição
-            quicksort(lista, baixo, indiceParticao - 1);
-            quicksort(lista, indiceParticao + 1, alto);
-        }
-    }
-
-    static int particao(LinkedList<Livro> lista, int baixo, int alto) {
-        Livro pivot = lista.get(alto);
-        int i = baixo - 1;
-
-        for (int j = baixo; j < alto; j++) {
-            // Comparar os títulos dos livros
-            if (lista.get(j).getTitulo().compareTo(pivot.getTitulo()) < 0) {
-                i++;
-
-                // Trocar os livros
-                Livro temp = lista.get(i);
-                lista.set(i, lista.get(j));
-                lista.set(j, temp);
-            }
-        }
-
-        // Trocar o pivot com o elemento na posição correta
-        Livro temp = lista.get(i + 1);
-        lista.set(i + 1, lista.get(alto));
-        lista.set(alto, temp);
-
-        return i + 1;
-    }
     
 public static void main(String[] args) {
 
@@ -61,15 +25,24 @@ public static void main(String[] args) {
         System.out.println("[6] Devolver um livro");
         System.out.println("[7] Buscar livro por titulo");
         System.out.println("[8] Buscar livro por autor");
-        System.out.println("[9] Finalizar");
+        System.out.println("[9] LISTAR LIVROS");
+        System.out.println("[10] Finalizar");
         escolha = sc.nextInt();
 
         switch (escolha){
             case 1: // ordenar por titulo
-            System.out.println("ordenei por titulo");
+            
+            listaLivros.ordenaPtitulo();
+
+            System.out.println("Lista depois de ordenada:");
+            listaLivros.listar(listaLivros);
+
+            System.out.printf("A lista esta ordenada pelo %s \n", listaLivros.getOrdenado());
             break;
 
             case 2: //ordernar por autor
+            listaLivros.ordenaPautor();
+            System.out.printf("A lista esta ordenada pelo %s \n", listaLivros.getOrdenado());
         
             break;
 
@@ -87,19 +60,28 @@ public static void main(String[] args) {
             numero = sc.nextInt();
             listaLivros.adicionar(new Livro(title, autor, numero));
             System.out.println("Parabéns seu livro foi adicionado com sucesso!");
-            
+            listaLivros.ordenacao();
             break;
 
             case 4: // remover livro
-            
+            System.out.println("Digite o nome do livro: ");
+            title = sc.nextLine();
+            title = sc.nextLine();
+            listaLivros.remover(listaLivros.getLivroTitulo(title));
             break;
 
             case 5: // emprestimo
-            
+            System.out.println("Digite o nome do livro: ");
+            title = sc.nextLine();
+            title = sc.nextLine();
+            listaLivros.emprestimo(title);
             break;
 
             case 6: //devolução
-            
+            System.out.println("Digite o nome do livro: ");
+            title = sc.nextLine();
+            title = sc.nextLine();
+            listaLivros.devolucao(title);
             break;
 
             case 7:// busca titutlo
@@ -110,7 +92,11 @@ public static void main(String[] args) {
            
             break;
 
-            case 9://Finalizar
+            case 9://Listar livros
+            listaLivros.listar(listaLivros);
+            break;
+
+            case 10://Finalizar
             System.out.println("Finalizando aplicativo...");
             break;
             
@@ -119,16 +105,11 @@ public static void main(String[] args) {
             escolha = 1;
 
       }
-    }while(escolha > 0 && escolha < 9);
+    }while(escolha > 0 && escolha < 10);
 
 
    // System.out.println("ANTES DE ORDENAR:");
-    
-    Elemento atual = listaLivros.getPrimeiro();
-    for (int i = 0; i < listaLivros.getTamanho(); i++) {
-        System.out.println(atual.book());
-        atual = atual.getProximo();
-    }
+
   
     sc.close();
    

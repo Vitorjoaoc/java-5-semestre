@@ -95,16 +95,18 @@ public class App3{
         Scanner sc = new Scanner(System.in);
         
         int resp = 0;
-        Item[] quaseOrdenado = {new Item(1), new Item(2), new Item(3), new Item(4), new Item(6), new Item(5), new Item(7), new Item(8), new Item(10), new Item(9)};
-
-        Item[] parcialmenteOrdenado = {new Item(1), new Item(3), new Item(4), new Item(5), new Item(6), new Item(10), new Item(2), new Item(8), new Item(7), new Item(6)};
-
-        Item[] desordenado = {new Item(10), new Item(9), new Item(8), new Item(7), new Item(6), new Item(5), new Item(4), new Item(3), new Item(2), new Item(1)};
+        
 
         System.out.println("Vamos ver a diferença entre os metodos de ordenação!\n");
 
         //Menu de opções
         do{
+            Item[] quaseOrdenado = {new Item(1), new Item(2), new Item(3), new Item(4), new Item(6), new Item(5), new Item(7), new Item(8), new Item(10), new Item(9)};
+
+            Item[] parcialmenteOrdenado = {new Item(1), new Item(3), new Item(4), new Item(5), new Item(6), new Item(10), new Item(2), new Item(8), new Item(7), new Item(6)};
+
+            Item[] desordenado = {new Item(10), new Item(9), new Item(8), new Item(7), new Item(6), new Item(5), new Item(4), new Item(3), new Item(2), new Item(1)};
+            
             System.out.println("\n[1] Método Bolha");
             System.out.println("[2] Método Seleção");
             System.out.println("[3] Método Inserção");
