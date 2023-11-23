@@ -7,6 +7,9 @@ Nome: X19, Peso: 5, Valor: 381
 
 Esse algoritmo utiliza a abordagem de Programação Dinâmica para resolver o problema da mochila. A programação dinâmica é uma técnica que envolve dividir um problema em subproblemas menores e resolver cada subproblema apenas uma vez, armazenando as soluções para evitar recálculos desnecessários. No caso do problema da mochila, a tabela tabela[i][w] armazena as soluções ótimas para subproblemas menores, onde i representa o número do item e w representa a capacidade da mochila. Essa abordagem ajuda a evitar a repetição de cálculos, melhorando a eficiência da solução.
 
+Complexidade: O(n * m) sendo que m = capacidade da Mochila
+
+
 
 ProblmeaMochilaGuloso:
 O valor máximo que pode ser colocado na mochila é: 1137
