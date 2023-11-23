@@ -56,7 +56,7 @@ public class ListaLigada {
 
         }
         this.tamanho++;
-        ordenacao();
+       // ordenacao();
     }
 
     public void remover(Elemento valorProcurado) {
@@ -84,6 +84,7 @@ public class ListaLigada {
                 }
 
                 this.tamanho--;
+                //ordenacao();
                 break;
             }
 
@@ -257,6 +258,14 @@ public class ListaLigada {
         Elemento atual = lista.getPrimeiro();
         for (int i = 0; i < lista.getTamanho(); i++) {
             System.out.println(atual.book());
+            atual = atual.getProximo();
+        }
+    }
+
+    void imprimirLista() {
+        Elemento atual = primeiro;
+        while (atual != null) {
+            System.out.println(atual.getValor());
             atual = atual.getProximo();
         }
     }

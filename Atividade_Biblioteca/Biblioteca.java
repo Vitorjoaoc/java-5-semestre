@@ -32,10 +32,17 @@ public static void main(String[] args) {
         switch (escolha){
             case 1: // ordenar por titulo
             
-            listaLivros.ordenaPtitulo();
+            //listaLivros.ordenaPtitulo();
+            System.out.println("Tamanho da lista: " + listaLivros.getTamanho());
+            System.out.println("Lista antes de ordenar: ");
+            listaLivros.imprimirLista();
+            listaLivros.ordenaPautor();
+            
 
-            System.out.println("Lista depois de ordenada:");
-            listaLivros.listar(listaLivros);
+            System.out.println("\nLista depois de ordenada:\n");
+            listaLivros.imprimirLista();
+            //listaLivros.listar(listaLivros);
+            System.out.println("Tamanho da lista: " + listaLivros.getTamanho());
 
             System.out.printf("A lista esta ordenada pelo %s \n", listaLivros.getOrdenado());
             break;
@@ -60,7 +67,8 @@ public static void main(String[] args) {
             numero = sc.nextInt();
             listaLivros.adicionar(new Livro(title, autor, numero));
             System.out.println("Parabéns seu livro foi adicionado com sucesso!");
-            listaLivros.ordenacao();
+            System.out.println("Lista ordenada pelo: " + listaLivros.getOrdenado());
+            listaLivros.imprimirLista();
             break;
 
             case 4: // remover livro
